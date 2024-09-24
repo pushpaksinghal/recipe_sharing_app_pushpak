@@ -1,0 +1,22 @@
+.nav{
+    height: 60px;
+    background-color: black;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+  }
+  .logo img{
+    width: 50px;
+  }
+  .menu{
+    margin-right: 25px;
+    width: 90px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .menu img{
+    width: 40px;
+
+  }
