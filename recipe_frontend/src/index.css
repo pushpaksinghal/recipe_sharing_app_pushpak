@@ -1,5 +1,12 @@
-.nav{
-  height: 60px;
-  background-color: black;
-  width: 100vh;
+/* index.css or global stylesheet */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  /* background-color: gray; */
+  
+
 }

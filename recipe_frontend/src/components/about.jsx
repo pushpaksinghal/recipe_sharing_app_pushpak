@@ -16,7 +16,9 @@ import tomato from '../assets/veg/tomato.png'
 
 function AboutUs() {
   return (
+    <>
     <div className="about-us-container">
+      <div className="top">
       <div className="about-us-text">
         <h1>About Us</h1>
         <p>
@@ -52,6 +54,8 @@ function AboutUs() {
           </a>
         </div>
       </div>
+      </div>
+      <div className="down">
       <div className="veg">
       <img src={capsicum} alt="" />
       <img src={cauliflower} alt="" />
@@ -61,7 +65,11 @@ function AboutUs() {
       <img src={carrot} alt="" />
 
       </div>
+      </div>
+      
     </div>
+  
+    </>
    
   );
 }

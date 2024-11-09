@@ -1,34 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Login from './components/Login.jsx'
-import Home from './components/Home.jsx'
+import { useState } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Auth from './components/Auth.jsx';
+import Home from './components/MainScreen.jsx';
+import Category from './components/Category.jsx'; // Import Category Component
 
-import { Link ,createBrowserRouter,RouterProvider} from 'react-router-dom';
-const router = createBrowserRouter(
-  [
-    {
-      path:'/',
-      element:<Login />
-    },
-    {
-      path:'/home',
-      element:<Home />
-    }
-  ]
-)
-
+// Define routes for your app
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Auth />,  // Route for login page
+  },
+  {
+    path: '/home',
+    element: <Home />,  // Route for home page
+  },
+  {
+    path: '/categories',
+    element: <Category />,  // Route for category page
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-            <RouterProvider router={router}/>
-
+      {/* Use RouterProvider to provide the router to the application */}
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export {App,router}
+export default App;
