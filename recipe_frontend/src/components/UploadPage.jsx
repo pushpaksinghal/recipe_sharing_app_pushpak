@@ -31,7 +31,7 @@ function UploadPage({ selectedCategory }) {
 
     return (
         <div className="upload-page">
-            <h2>Upload Recipe in Category: {selectedCategory}</h2>
+            <h2>Category: {selectedCategory}</h2>
 
             <form onSubmit={handleFormSubmit} className="upload-form">
                 {/* Photo Upload Section */}
