@@ -8,6 +8,7 @@
     /* Assuming NavBar height is 60px */
     justify-content: flex-start;
     align-items: center;
+    background-color: white;
 }
 
 .upload-form {

@@ -2,17 +2,34 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 20px 30px;
-    background-color: rgb(13, 30, 50);
+    background-color:#bbc0c7;
+    /* opacity: .8; */
 
+}
+.social-media{
+    margin-top: 2%;
+    display: flex;
+    border: 2px red solid;
+    width: 40%;
+    justify-content:space-between;
+}
+
+.learn-below-list{
+text-decoration: none;
+list-style: none;
 }
 
 .top {
     display: flex;
     flex-direction: row;
 
+}
+.ourmission{
+    font-size: 25px;
+    font-weight: 300;
 }
 
 .about-us-text {

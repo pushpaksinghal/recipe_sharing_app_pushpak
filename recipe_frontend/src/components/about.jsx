@@ -21,7 +21,7 @@ function AboutUs() {
       <div className="top">
       <div className="about-us-text">
         <h1>About Us</h1>
-        <p>
+        <p className='ourmission'>
           Our mission at CookBook is to make everyday cooking fun,
           because we believe that cooking is key to a happier and
           healthier life for people, communities and the planet. We

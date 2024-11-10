@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import cook from "../assets/cooking.png";
-import plus from "../assets/plus.png";
-import profile from "../assets/profile.png";
+// import cook from "../assets/cooking.png";
+// import plus from "../assets/plus.png";
+// import profile from "../assets/profile.png";
 import NavBar from "./NavBar";
+import HomeSearch from "./HomeSearchBlock.jsx";
 import About from "./about.jsx";
 import Category from "./Category.jsx";
+import DataSection from "./DataSection.jsx";
 import UploadPage from "./UploadPage.jsx";
 import { auth } from "../utils/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
@@ -45,8 +47,13 @@ function MainScreen() {
         ) : (
           <>
             {user ? (
-              <h1>Welcome, {user.uid}! Select a category to start uploading.</h1>
-            ) : (
+              <>
+              
+              <HomeSearch />
+              <DataSection />
+              </>
+
+) : (
               <h1>You are not signed in</h1>
             )}
           </>
