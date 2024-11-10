@@ -1,8 +1,9 @@
-import { useState } from 'react';
+// src/App.js
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Auth from './components/Auth.jsx';
 import Home from './components/MainScreen.jsx';
-import Category from './components/Category.jsx'; // Import Category Component
+import Category from './components/category.jsx';
+import UploadPage from './components/UploadPage.jsx'; // Import UploadPage Component
 
 // Define routes for your app
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/categories',
     element: <Category />,  // Route for category page
+  },
+  {
+    path: '/upload/:category', // Route for upload page with category parameter
+    element: <UploadPage />,
   },
 ]);
 

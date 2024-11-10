@@ -1,40 +1,47 @@
-.about-us-container{
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  color: white;
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.about-us-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px 30px;
+    background-color: rgb(13, 30, 50);
 
-  background-color: rgb(13, 30, 50);
+}
 
-  }
-  .top{
-      display: flex;
-      flex-direction: row;
-  
-  }
-  .about-us-text{
-  width: 50%;
-  }
-  .learn-more{
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  }
-  a{
-      list-style: none;
-      text-decoration: none;
-  }
-  a img{
-      width: 50px;
-  }
-  .veg{
-      position: relative;
-      bottom: -150px;
-      display: flex;
-      justify-content: space-between;
-  }
-  .veg img{
-      width: 15%;
-  }
+.top {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.about-us-text {
+    width: 50%;
+}
+
+.learn-more {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
+}
+
+a img {
+    width: 50px;
+}
+
+.veg {
+    position: relative;
+    bottom: -150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.veg img {
+    width: 15%;
+}
