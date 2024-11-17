@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import app from "../utils/firebase"; // Firebase initialization
-import '../css/recipeDetail.css'; // Import the CSS file
+import "../css/recipeDetail.css"; // Import the CSS file
 
 const db = getFirestore(app);
 
-const RecipeDetails = ({id,showDetail}) => {
+// RecipeDetail.jsx
+const RecipeDetail = ({ id, showDetail, setHomeSearch }) => {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
@@ -29,15 +30,21 @@ const RecipeDetails = ({id,showDetail}) => {
 
   return (
     <div className="container">
-      <button className="button" onClick={()=>{
-    
-        showDetail(null)
-      }}>Back</button>
+      <button
+        className="button"
+        onClick={() => {
+          showDetail(null); // Clear the selected recipe
+          setHomeSearch(true); // Set homeSearch to true when going back
+        }}
+      >
+        Back
+      </button>
 
       <img src={recipe.photos} alt={recipe.recipeName} className="image" />
       <h1 className="heading">{recipe.recipeName}</h1>
       <p className="section">
-        <strong className="highlight">Ingredients:</strong> {recipe.ingredients}
+        <strong className="highlight">Ingredients:</strong>{" "}
+        {recipe.ingredients}
       </p>
       <p className="section">
         <strong className="highlight">Procedure:</strong> {recipe.procedure}
@@ -57,4 +64,4 @@ const RecipeDetails = ({id,showDetail}) => {
   );
 };
 
-export default RecipeDetails;
+export default RecipeDetail;

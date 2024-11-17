@@ -2,8 +2,9 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 import app from "../utils/firebase"; // Adjust the path to your Firebase initialization file
 
 const db = getFirestore(app);
+import RecipeDetail from "./RecipeDetail";
+import React, { useEffect, useState } from "react";
 
-import RecipeDetails from "./RecipeDetail";
 export const fetchRecipes = async () => {
   try {
     const recipesCollection = collection(db, "recipe");
@@ -22,10 +23,7 @@ export const fetchRecipes = async () => {
   }
 };
 
-
-import React, { useEffect, useState } from "react";
-
-const RecipeGrid = ({homeSearch}) => {
+const AllRecipe = ({ homeSearch }) => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipeId, setSelectedRecipeId] = useState(null); // Track selected recipe ID
 
@@ -39,22 +37,24 @@ const RecipeGrid = ({homeSearch}) => {
   }, []);
 
   if (selectedRecipeId) {
-    // Render RecipeDetails if a recipe is selected
-    return <RecipeDetails showDetail={setSelectedRecipeId}  id={selectedRecipeId}/>;
-    id(selectedRecipeId)
-    homeSearch(false)
-    showData(false)
-    homeSearch(false)
-
+    // Render RecipeDetail if a recipe is selected
+    return (
+      <RecipeDetail
+        showDetail={setSelectedRecipeId}
+        id={selectedRecipeId}
+        homeSearch={homeSearch(false)} // This should be set to false when showing details
+        setHomeSearch={homeSearch} // Pass the setHomeSearch function here
+      />
+    );
   }
-  // homeSearch(true)
+
   return (
     <div style={styles.gridContainer}>
       {recipes.map((recipe) => (
         <div
           key={recipe.id}
           style={styles.card}
-          onClick={() => setSelectedRecipeId(recipe.id)} // Pass ID to RecipeDetails
+          onClick={() => setSelectedRecipeId(recipe.id)} // Pass ID to RecipeDetail
         >
           <img src={recipe.photos} alt={recipe.recipeName} style={styles.image} />
           <h3 style={styles.title}>{recipe.recipeName}</h3>
@@ -94,4 +94,4 @@ const styles = {
   },
 };
 
-export default RecipeGrid;
+export default AllRecipe;
