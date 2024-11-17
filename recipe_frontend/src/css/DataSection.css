@@ -1,5 +1,7 @@
-.datasection{
+.datasection {
     width: 100%;
-    height: 900px;
+    min-height: 900px; /* Ensure it expands with content */
     background-color: white;
+    z-index: 0; /* Layer below HomeSearch */
+    position: relative; /* Default stacking context */
 }

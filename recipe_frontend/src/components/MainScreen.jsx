@@ -10,7 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import "../home.css";
 
 function MainScreen() { 
-  const [user, setUser ] = useState("no usr");
+  const [user, setUser] = useState("no usr");
   const [showCategory, setShowCategory] = useState(false);
   const [showUploadPage, setShowUploadPage] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -18,7 +18,7 @@ function MainScreen() {
      
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setUser (user ? user : null);
+      setUser(user ? user : null);
     });
   }, []);
 
@@ -55,6 +55,7 @@ function MainScreen() {
           </>
         )}
       </div>
+
       <About />
     </div>
   );
