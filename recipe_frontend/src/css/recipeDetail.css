@@ -1,0 +1,57 @@
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Image styles */
+  .image {
+    width: 50%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* Heading styles */
+  .heading {
+    font-size: 32px;
+    font-weight: bold;
+    color: #FFA500;
+    margin-bottom: 10px;
+  }
+  
+  /* Section content styles */
+  .section {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  /* Highlighted text styles */
+  .highlight {
+    background-color: #FFD700;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  
+  /* Reviews section */
+  .reviews {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: left;
+  }
+  
+  /* Button styles */
+  .button {
+    background-color: #FFA500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
