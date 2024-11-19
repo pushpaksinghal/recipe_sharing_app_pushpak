@@ -5,17 +5,19 @@ import About from "./about.jsx";
 import Category from "./category.jsx";
 import DataSection from "./DataSection.jsx";
 import UploadPage from "./UploadPage.jsx";
+import ProfilePage from "./ProfilePage.jsx"; // Import the profile page component
 import { auth } from "../utils/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 import "../home.css";
 
-function MainScreen() { 
+function MainScreen() {
   const [user, setUser] = useState("no usr");
   const [showCategory, setShowCategory] = useState(false);
   const [showUploadPage, setShowUploadPage] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [homeSearch, setHomeSearch] = useState(true);
-     
+  const [showProfilePage, setShowProfilePage] = useState(false); // New state for profile page
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user ? user : null);
@@ -25,6 +27,13 @@ function MainScreen() {
   const handleCategoryClick = () => {
     setShowCategory(!showCategory);
     setShowUploadPage(false);
+    setShowProfilePage(false); // Close profile page if category is opened
+  };
+
+  const handleProfileClick = () => {
+    setShowProfilePage(true); // Show the profile page
+    setShowCategory(false);
+    setShowUploadPage(false); // Close other sections
   };
 
   const categoryHandled = (category) => {
@@ -35,13 +44,21 @@ function MainScreen() {
 
   return (
     <div className="main-screen home">
-      <NavBar onPlusClick={handleCategoryClick} />
+      <NavBar
+        onPlusClick={handleCategoryClick}
+        onProfileClick={handleProfileClick} // Pass the handler for the profile icon
+      />
 
       <div className="content">
-        {showCategory ? (
+        {showProfilePage ? (
+          <ProfilePage user={user} /> // Render the profile page
+        ) : showCategory ? (
           <Category clickHandle={categoryHandled} />
         ) : showUploadPage ? (
-          <UploadPage selectedCategory={selectedCategory} setShowUploadPage={setShowUploadPage} />
+          <UploadPage
+            selectedCategory={selectedCategory}
+            setShowUploadPage={setShowUploadPage}
+          />
         ) : (
           <>
             {user ? (

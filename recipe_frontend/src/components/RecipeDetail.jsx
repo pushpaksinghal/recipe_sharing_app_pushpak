@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import app from "../utils/firebase"; // Firebase initialization
 import "../css/recipeDetail.css"; // Import the CSS file
-import backArrow from "../assets/backspace.png"; 
+import backArrow from "../assets/backspace.png";
 
 const db = getFirestore(app);
 
@@ -28,6 +28,25 @@ const RecipeDetail = ({ id, showDetail, setHomeSearch }) => {
     return <p>Loading...</p>;
   }
 
+  // Function to capitalize the first letter of each word
+  const capitalizeWords = (str) =>
+    str
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toLocaleUpperCase() + word.slice(1))
+      .join(" ");
+
+  const formatContent = (content) =>
+    content
+      .split(",")
+      .filter((item) => item.trim() !== "") // Avoid gaps
+      .map((item, index) => (
+        <span key={index} className="formatted-content">
+          {item.trim()}
+          <br />
+        </span>
+      ));
+
   return (
     <div className="container">
       {/* Back Button */}
@@ -44,54 +63,70 @@ const RecipeDetail = ({ id, showDetail, setHomeSearch }) => {
       {/* Main Content */}
       <div className="content-wrapper">
         <div className="text-section">
-          <h1 className="heading">{recipe.recipeName}</h1>
+          <h1 className="heading">{capitalizeWords(recipe.recipeName)}</h1>
           <p className="section calories">
             <strong>Calories:</strong> {recipe.calorieCount}
           </p>
+          {/* Buttons for likes and shares */}
+          <div className="buttons">
+            <button className="button">
+              <span className="button-icon">❤️</span> Like (123)
+            </button>
+            <button className="button">
+              <span className="button-icon">🔗</span> Share (45)
+            </button>
+          </div>
         </div>
         <div className="image-section">
           <img src={recipe.photos} alt={recipe.recipeName} className="image" />
         </div>
       </div>
 
+      <hr />
+      <br />
+
       {/* Ingredients and Procedure */}
       <div className="recipe-sections">
         <div className="ingredients">
           <h2>Ingredients</h2>
-          <p>{recipe.ingredients}</p>
+          <p>{formatContent(recipe.ingredients)}</p>
         </div>
         <div className="procedure">
           <h2>Procedure</h2>
-          <p>{recipe.procedure}</p>
+          <p>{formatContent(recipe.procedure)}</p>
         </div>
       </div>
+
+      <hr />
+      <br />
 
       {/* Tags Section */}
       <div className="tags-section">
         <h3>Tags</h3>
-        {Array.isArray(recipe.tags) ? (
-          recipe.tags.map((tag, index) => (
-            <span key={index} className="tag">
-              {tag.trim()}
-            </span>
-          ))
-        ) : (
-          recipe.tags
-            ?.split(",")
-            .map((tag, index) => (
+        <div className="tags">
+          {Array.isArray(recipe.tags) ? (
+            recipe.tags.map((tag, index) => (
               <span key={index} className="tag">
                 {tag.trim()}
               </span>
             ))
-        )}
+          ) : (
+            recipe.tags
+              ?.split(",")
+              .filter((tag) => tag.trim() !== "")
+              .map((tag, index) => (
+                <span key={index} className="tag">
+                  {tag.trim()}
+                </span>
+              ))
+          )}
+        </div>
       </div>
 
       {/* Reviews Section */}
       <div className="reviews-section">
         <h3>Reviews</h3>
-        <p>
-          <strong>Likes:</strong> ❤️ 123
-        </p>
+
         <p>
           <strong>Ratings:</strong> 🌟🌟🌟🌟🌟
         </p>
